@@ -1,37 +1,41 @@
-let cost;
+const AUSTR_CNTR = "АВСТРАЛИЯ";
+const CHILI_CNTR = "ЧИЛИ";
+const CHINA_CNTR = "КИТАЙ";
+const JAMAI_CNTR = "ЯМАЙКА";
+const INDIA_CNTR = "ИНДИЯ";
+const USER_CANCEL = "Отменено пользователем!";
+const NOT_DLVR = "В вашей стране доставка недоступна";
 const userInput = prompt("Введите страну доставки");
 if (userInput === null) {
-  console.log("Отменено пользователем!");
+  console.log(USER_CANCEL);
 } else {
-  const country = userInput.toUpperCase();
+  let country = userInput.toUpperCase();
+  let cost = 0;
 
   switch (country) {
-    case "КИТАЙ":
+    case CHINA_CNTR:
       cost = 100;
-      console.log(`Доставка в ${country} будет стоить ${cost} кредитов`);
       break;
 
-    case "ЧИЛИ":
+    case CHILI_CNTR:
       cost = 250;
-      console.log(`Доставка в ${country} будет стоить ${cost} кредитов`);
       break;
 
-    case "АВСТРАЛИЯ":
+    case AUSTR_CNTR:
       cost = 170;
-      console.log(`Доставка в ${country} будет стоить ${cost} кредитов`);
       break;
 
-    case "ИНДИЯ":
+    case INDIA_CNTR:
       cost = 80;
-      console.log(`Доставка в ${country} будет стоить ${cost} кредитов`);
       break;
 
-    case "ЯМАЙКА":
+    case JAMAI_CNTR:
       cost = 120;
-      console.log(`Доставка в ${country} будет стоить ${cost} кредитов`);
       break;
-
-    default:
-      console.log("В вашей стране доставка не доступна");
+  }
+  if (cost !== 0) {
+    console.log(`Доставка в страну ${country} будет стоить ${cost} кредитов`);
+  } else {
+    console.log(NOT_DLVR);
   }
 }

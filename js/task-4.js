@@ -1,17 +1,17 @@
+const CANCEL_MSG = "Отменено пользователем!";
+const NO_MONEY = "Недостаточно средств на счете!";
 let credits = 23580;
 const pricePerDroid = 3000;
-let totalPrice;
 const userInput = prompt(
   "Укажите количество дроидов, которое Вы хотите купить!"
 );
-
+let totalPrice = Number(userInput) * pricePerDroid;
+let message;
 if (userInput === null) {
-  console.log("Отменено пользователем!");
+  message = CANCEL_MSG;
 } else if (Number(userInput) * pricePerDroid > credits) {
-  console.log("Недостаточно средств на счете!");
+  message = NO_MONEY;
 } else {
-  totalPrice = Number(userInput) * pricePerDroid;
-  console.log(
-    `Вы купили ${userInput} дроидов, на счете осталось ${(credits -= totalPrice)} кредитов.`
-  );
+  message = `Вы купили ${userInput} дроидов, на счете осталось ${(credits -= totalPrice)} кредитов.`;
 }
+console.log(message);
